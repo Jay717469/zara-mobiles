@@ -1,0 +1,27 @@
+package com.zara.mobiles.dto;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+public class ReviewCreateRequest {
+
+    @NotNull(message = "Rating is required")
+    @Min(value = 1, message = "Rating must be between 1 and 5")
+    @Max(value = 5, message = "Rating must be between 1 and 5")
+    private Integer rating;
+
+    private String headline;
+    private String comment;
+
+    public ReviewCreateRequest() {}
+
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
+
+    public String getHeadline() { return headline; }
+    public void setHeadline(String headline) { this.headline = headline; }
+
+    public String getComment() { return comment; }
+    public void setComment(String comment) { this.comment = comment; }
+}

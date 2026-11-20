@@ -1,0 +1,6 @@
+com\zara\mobiles\ProductServiceTest.class
+com\zara\mobiles\OrderServiceTest.class
+com\zara\mobiles\ZaraMobilesApplicationTests.class
+com\zara\mobiles\PaymentServiceTest.class
+com\zara\mobiles\AuthServiceTest.class
+com\zara\mobiles\CartServiceTest.class
