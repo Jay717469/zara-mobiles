@@ -14,6 +14,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { productService } from '../services/productService';
+import { FALLBACK_PRODUCTS } from '../services/fallbackCatalog';
 import { useUI } from '../context/UIContext';
 import CategoryNav from '../components/CategoryNav';
 import ProductCard from '../components/ProductCard';
@@ -23,9 +24,9 @@ export default function Home() {
   const ui = useUI();
   const [searchParams] = useSearchParams();
 
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [totalElements, setTotalElements] = useState(0);
+  const [products, setProducts] = useState(FALLBACK_PRODUCTS);
+  const [loading, setLoading] = useState(false);
+  const [totalElements, setTotalElements] = useState(FALLBACK_PRODUCTS.length);
 
   // Sync search param from URL if present
   useEffect(() => {
@@ -90,7 +91,9 @@ export default function Home() {
           setTotalElements(list.length);
         }
       } catch (err) {
-        console.error('Failed to load products', err);
+        console.warn('API error, maintaining fallback catalog', err);
+        setProducts(FALLBACK_PRODUCTS);
+        setTotalElements(FALLBACK_PRODUCTS.length);
       } finally {
         setLoading(false);
       }

@@ -168,6 +168,10 @@ export default function ProductCard({ product }) {
           alt={product.name}
           className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
           loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://images.unsplash.com/photo-1511707171634-5f897ff02560?auto=format&fit=crop&w=600&q=80';
+          }}
         />
 
         {/* Wishlist Heart Icon Button */}

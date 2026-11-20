@@ -238,6 +238,10 @@ export default function ProductDetails() {
               src={selectedImage || 'https://images.unsplash.com/photo-1511707171634-5f897ff02560?auto=format&fit=crop&w=800&q=80'}
               alt={product.name}
               className="absolute inset-0 w-full h-full object-contain p-6 hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://images.unsplash.com/photo-1511707171634-5f897ff02560?auto=format&fit=crop&w=800&q=80';
+              }}
             />
             {discountPercent > 0 && (
               <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-500 text-white text-xs font-black rounded-lg shadow-sm">

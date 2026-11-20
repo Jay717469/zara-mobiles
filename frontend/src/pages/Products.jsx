@@ -12,6 +12,7 @@ import {
   Smartphone
 } from 'lucide-react';
 import { productService } from '../services/productService';
+import { FALLBACK_PRODUCTS } from '../services/fallbackCatalog';
 import { useUI } from '../context/UIContext';
 import CategoryNav from '../components/CategoryNav';
 import ProductCard from '../components/ProductCard';
@@ -27,13 +28,13 @@ export default function Products() {
   const brandParam = searchParams.get('brand') || ui.selectedBrand || '';
   const pageParam = parseInt(searchParams.get('page') || '0', 10);
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(FALLBACK_PRODUCTS);
   const [pageInfo, setPageInfo] = useState({
     pageNumber: 0,
     totalPages: 1,
-    totalElements: 0,
+    totalElements: FALLBACK_PRODUCTS.length,
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Sync keyword if URL changes
   useEffect(() => {
